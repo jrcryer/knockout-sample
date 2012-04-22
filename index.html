@@ -2,5 +2,59 @@
 <html>
    <head>
        <title>Knockout.js - It's a knockout</title>
+       <link rel="stylesheet" href="css/bootstrap.min.css" />
+       <link rel="stylesheet" href="css/styles.css" />         
    </head>
+   <body>
+    
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="#">Knockout.js</a>
+                <ul class="nav">
+                    <li>
+                        <a href="#" title="Add new person" data-bind="click: showForm, visible: displayButton">Add person</a>
+                    </li>
+                </ul>  
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="page-header">
+            <h1>Contacts</h1>
+        </div>
+        <fieldset data-bind="visible: displayForm">
+            <div class="span6">
+                <div class="details">  
+                    <label>Name: <input id="name" /></label>
+                    <label>Address: <input id="address" /></label>  
+                    <label>Tel: <input id="tel" /></label>  
+                    <label>Site: <input id="site" /></label> 
+                </div>  
+                <div class="tools form-actions">
+                    <a data-bind="click: addPerson" class="btn btn-primary">Add</a>  
+                    or <a data-bind="click: hideForm">Cancel</a>  
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="page" data-bind="foreach: people">
+            <section>  
+                <div class="well">
+                    <h1><span data-bind="text: name"></span></h1>  
+                    <address><span data-bind="text: address"></span></address>  
+                    <span class="tel"><span data-bind="text: tel"></span></span>  
+                    <a href="http://${ site }" title="Visit site"><span data-bind="text: site"></span></a>  
+                    <div class="tools form-actions">  
+                        <a data-bind="click: deleteMe" class="btn btn-danger">Delete</a>  
+                    </div>  
+                </div>
+            </section>  
+        </div>
+    </div>
+    <script src="lib/jquery-1.7.1.min.js"></script>  
+    <script src="lib/knockout-2.0.0.js"></script>
+    <script src="lib/bootstrap.js"></script>  
+    <script src="js/behavior.js"></script>  
+   </body>
 </html>
